@@ -10,16 +10,16 @@ import UIKit
 
 extension UIImageView {
   
-  func loadURL(url: NSURL?) {
+  func loadURL(_ url: URL?) {
     guard let url = url else {
       return
     }
     
-    let urlRequest = NSURLRequest(URL: url)
+    let urlRequest = URLRequest(url: url)
     
-    NSURLSession.sharedSession().dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
-      if let response = response, data = data where response.isHTTPResponseValid() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, response, error) -> Void in
+      if let response = response, let data = data, response.isHTTPResponseValid() {
+        DispatchQueue.main.async(execute: { () -> Void in
           if UIImage(data: data) == nil {
             self.image = UIImage(named: "standardCat")
           } else {
@@ -27,14 +27,14 @@ extension UIImageView {
           }
         })
       }
-      }.resume()
+      }) .resume()
   }
   
 }
 
-extension NSURLResponse {
+extension URLResponse {
   func isHTTPResponseValid() -> Bool {
-    guard let response = self as? NSHTTPURLResponse else {
+    guard let response = self as? HTTPURLResponse else {
       return false
     }
     

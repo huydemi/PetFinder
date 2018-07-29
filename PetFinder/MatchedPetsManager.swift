@@ -12,7 +12,7 @@ class MatchedPetsManager {
   
   static let sharedManager = MatchedPetsManager()
   
-  private let fileName = "petArray"
+  fileprivate let fileName = "petArray"
   
   var matchedPets = [Pet]()
   
@@ -20,29 +20,29 @@ class MatchedPetsManager {
     unarchivePets()
   }
   
-  func addPet(pet: Pet) {
-    matchedPets.insert(pet, atIndex: 0)
+  func addPet(_ pet: Pet) {
+    matchedPets.insert(pet, at: 0)
   }
   
   func unarchivePets() {
-    let dirPath = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String
+    let dirPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] as String
     let pathArray = [dirPath, fileName]
-    let fileURL =  NSURL.fileURLWithPathComponents(pathArray)!
-    
-    if let path = fileURL.path, pets = NSKeyedUnarchiver.unarchiveObjectWithFile(path) {
+    let fileURL = URL(fileURLWithPath: dirPath + "\\" + fileName)
+    let path = fileURL.path
+    if let pets = NSKeyedUnarchiver.unarchiveObject(withFile: path) {
       matchedPets = pets as! [Pet]
     }
   }
   
   func archivePets() {
-    let dirPath = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String
+    let dirPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] as String
     let pathArray = [dirPath, fileName]
-    let fileURL =  NSURL.fileURLWithPathComponents(pathArray)!
+    let fileURL = URL(fileURLWithPath: dirPath + "\\" + fileName)
     
-    NSKeyedArchiver.archiveRootObject(matchedPets, toFile: fileURL.path!)
+    NSKeyedArchiver.archiveRootObject(matchedPets, toFile: fileURL.path)
   }
   
-  func updatePet(id id: Int, name: String?, age: String?) {
+  func updatePet(id: Int, name: String?, age: String?) {
     guard let name = name, let age = Int(age ?? "0") else { return }
     
     for pet in matchedPets {
@@ -53,7 +53,7 @@ class MatchedPetsManager {
     }
   }
   
-  func petForId(id: Int) -> Pet? {
+  func petForId(_ id: Int) -> Pet? {
     for pet in matchedPets {
       if pet.id == id {
         return pet

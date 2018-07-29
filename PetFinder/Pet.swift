@@ -13,10 +13,10 @@ class Pet: NSObject {
   
   var name = ""
   var age = 0
-  var imageData = NSData()
+  var imageData = Data()
   var id = 0
   
-  var imageURL = NSURL()
+  var imageURL: URL!
   
   override init() {
     super.init()
@@ -26,19 +26,19 @@ class Pet: NSObject {
   required convenience init(coder decoder: NSCoder) {
     self.init()
     
-    if let archivedName = decoder.decodeObjectForKey("name") as? String {
+    if let archivedName = decoder.decodeObject(forKey: "name") as? String {
       name = archivedName
     }
     
-    if let archivedAge = decoder.decodeObjectForKey("age") as? Int {
+    if let archivedAge = decoder.decodeObject(forKey: "age") as? Int {
       age = archivedAge
     }
     
-    if let archivedImage = decoder.decodeObjectForKey("image") {
-      imageData = archivedImage as! NSData
+    if let archivedImage = decoder.decodeObject(forKey: "image") {
+      imageData = archivedImage as! Data
     }
     
-    id = decoder.decodeIntegerForKey("id")
+    id = decoder.decodeInteger(forKey: "id")
   }
   
   class func randomPet() -> Pet {
@@ -50,30 +50,30 @@ class Pet: NSObject {
     return pet
   }
   
-  private class func randomName() -> String {
+  fileprivate class func randomName() -> String {
     return PetNameGenerator.randomName()
   }
   
-  private class func randomAge() -> Int {
+  fileprivate class func randomAge() -> Int {
     return Int(arc4random_uniform(10)) + 1
   }
   
-  private class func randomPetURL() -> NSURL {
+  fileprivate class func randomPetURL() -> URL {
     let width = Int(arc4random_uniform(500)) + 200
     let height = Int(arc4random_uniform(500)) + 200
     
-    return NSURL(string: "https://placekitten.com/\(width)/\(height)")!
+    return URL(string: "https://placekitten.com/\(width)/\(height)")!
   }
   
 }
 
 extension Pet: NSCoding {
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(name, forKey: "name")
-    coder.encodeObject(age, forKey: "age")
-    coder.encodeObject(imageData, forKey: "image")
-    coder.encodeInteger(id, forKey: "id")
+  func encode(with coder: NSCoder) {
+    coder.encode(name, forKey: "name")
+    coder.encode(age, forKey: "age")
+    coder.encode(imageData, forKey: "image")
+    coder.encode(id, forKey: "id")
   }
   
 }

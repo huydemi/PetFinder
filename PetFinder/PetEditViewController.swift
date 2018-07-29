@@ -23,41 +23,41 @@ class PetEditViewController: UIViewController {
   override func loadView() {
     view = UIView()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PetEditViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(PetEditViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PetEditViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(PetEditViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
     automaticallyAdjustsScrollViewInsets = false
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
     
     let stackView = UIStackView(arrangedSubviews: [profileImageView, nameTextField, ageTextField])
-    stackView.axis = .Vertical
+    stackView.axis = .vertical
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.spacing = 10.0
     
     view.addSubview(stackView)
     
-    stackView.leadingAnchor.constraintEqualToAnchor(view.readableContentGuide.leadingAnchor).active = true
-    stackView.trailingAnchor.constraintEqualToAnchor(view.readableContentGuide.trailingAnchor).active = true
-    stackView.topAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.topAnchor, constant: 20.0).active = true
+    stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor).isActive = true
+    stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor).isActive = true
+    stackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20.0).isActive = true
     
-    profileImageView.heightAnchor.constraintEqualToConstant(300.0).active = true
+    profileImageView.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
   }
   
-  func keyboardWillShow(notification: NSNotification) {
+  func keyboardWillShow(_ notification: Notification) {
     if !keyboardUp {
-      UIView.animateWithDuration(0.25) {
+      UIView.animate(withDuration: 0.25, animations: {
         self.view.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 100)
-      }
+      }) 
       keyboardUp = true
     }
   }
   
-  func keyboardWillHide(notification: NSNotification) {
+  func keyboardWillHide(_ notification: Notification) {
     if keyboardUp {
-      UIView.animateWithDuration(0.25) {
+      UIView.animate(withDuration: 0.25, animations: {
         self.view.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 100)
-      }
+      }) 
       keyboardUp = false
     }
   }
@@ -69,22 +69,22 @@ class PetEditViewController: UIViewController {
     restorationClass = PetEditViewController.self
 
     
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.white
     
-    profileImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    profileImageView.contentMode = UIViewContentMode.scaleAspectFill
     profileImageView.clipsToBounds = true
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PetEditViewController.saveWasTapped))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PetEditViewController.saveWasTapped))
     
-    nameTextField.borderStyle = .RoundedRect
-    ageTextField.borderStyle = .RoundedRect
+    nameTextField.borderStyle = .roundedRect
+    ageTextField.borderStyle = .roundedRect
     
     nameTextField.placeholder = "Name"
     ageTextField.placeholder = "Age"
     
-    profileImageView.contentMode = .ScaleAspectFill
+    profileImageView.contentMode = .scaleAspectFill
     profileImageView.clipsToBounds = true
-    profileImageView.backgroundColor = UIColor.lightGrayColor()
+    profileImageView.backgroundColor = UIColor.lightGray
     
     setPet()
   }
@@ -92,11 +92,11 @@ class PetEditViewController: UIViewController {
   func saveWasTapped() {
     MatchedPetsManager.sharedManager.updatePet(id: petId!, name: nameTextField.text, age: ageTextField.text)
     
-    navigationController?.popViewControllerAnimated(true)
+    navigationController?.popViewController(animated: true)
   }
   
   func setPet() {
-    guard let petId = petId, pet = MatchedPetsManager.sharedManager.petForId(petId) else {
+    guard let petId = petId, let pet = MatchedPetsManager.sharedManager.petForId(petId) else {
       return
     }
     
@@ -105,45 +105,45 @@ class PetEditViewController: UIViewController {
     profileImageView.image = UIImage(data: pet.imageData)
   }
   
-  override func encodeRestorableStateWithCoder(coder: NSCoder) {
+  override func encodeRestorableState(with coder: NSCoder) {
     if let image = profileImageView.image {
-      coder.encodeObject(UIImagePNGRepresentation(image), forKey: "image")
+      coder.encode(UIImagePNGRepresentation(image), forKey: "image")
     }
     
     if let name = nameTextField.text {
-      coder.encodeObject(name, forKey: "name")
+      coder.encode(name, forKey: "name")
     }
     
     if let age = ageTextField.text {
-      coder.encodeObject(age, forKey: "age")
+      coder.encode(age, forKey: "age")
     }
     
-    coder.encodeInt(Int32(petId!), forKey: "id")
+    coder.encodeCInt(Int32(petId!), forKey: "id")
     
-    super.encodeRestorableStateWithCoder(coder)
+    super.encodeRestorableState(with: coder)
   }
   
-  override func decodeRestorableStateWithCoder(coder: NSCoder) {
-    if let imageData = coder.decodeObjectForKey("image") as? NSData {
+  override func decodeRestorableState(with coder: NSCoder) {
+    if let imageData = coder.decodeObject(forKey: "image") as? Data {
       profileImageView.image = UIImage(data: imageData)
     }
     
-    if let name = coder.decodeObjectForKey("name") as? String {
+    if let name = coder.decodeObject(forKey: "name") as? String {
       nameTextField.text = name
     }
     
-    if let age = coder.decodeObjectForKey("age") as? String {
+    if let age = coder.decodeObject(forKey: "age") as? String {
       ageTextField.text = age
     }
     
-    petId = Int(coder.decodeIntegerForKey("id"))
+    petId = Int(coder.decodeInteger(forKey: "id"))
     
-    super.decodeRestorableStateWithCoder(coder)
+    super.decodeRestorableState(with: coder)
   }
 }
 
 extension PetEditViewController: UIViewControllerRestoration {
-  static func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject],
+  static func viewController(withRestorationIdentifierPath identifierComponents: [Any],
                                                           coder: NSCoder) -> UIViewController? {
     let vc = PetEditViewController()
     return vc

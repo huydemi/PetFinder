@@ -12,14 +12,14 @@ class PetCell: UICollectionViewCell {
   
   @IBOutlet weak var profileImageView: UIImageView!
   
-  override var selected: Bool {
+  override var isSelected: Bool {
     didSet {
-      profileImageView.alpha = selected ? 0.5 : 1.0
+      profileImageView.alpha = isSelected ? 0.5 : 1.0
     }
   }
   
-  private var currentPet: Pet!
-  private var currentPetId = 0
+  fileprivate var currentPet: Pet!
+  fileprivate var currentPetId = 0
 
   var petId: Int {
     get {
@@ -29,18 +29,18 @@ class PetCell: UICollectionViewCell {
       currentPetId = newPetId
       currentPet = MatchedPetsManager.sharedManager.petForId(petId)!
       
-      profileImageView.image = UIImage(data: currentPet.imageData)
+      profileImageView.image = UIImage(data: currentPet.imageData as Data)
     }
   }
   
   override func prepareForReuse() {
-    profileImageView.image = UIImage(data: currentPet.imageData)
+    profileImageView.image = UIImage(data: currentPet.imageData as Data)
   }
   
   override func layoutSubviews() {
-    profileImageView.image = UIImage(data: currentPet.imageData)
+    profileImageView.image = UIImage(data: currentPet.imageData as Data)
 
-    layer.borderColor = UIColor.blackColor().CGColor
+    layer.borderColor = UIColor.black.cgColor
     layer.borderWidth = 2.0
     layer.cornerRadius = 4.0
   }

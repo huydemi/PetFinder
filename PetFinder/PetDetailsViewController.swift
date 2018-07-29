@@ -18,14 +18,14 @@ class PetDetailsViewController: UIViewController {
   
   override func viewDidLoad() {
     profilePictureImageView.layer.cornerRadius = 4.0
-    profilePictureImageView.layer.borderColor = UIColor.whiteColor().CGColor
+    profilePictureImageView.layer.borderColor = UIColor.white.cgColor
     profilePictureImageView.layer.borderWidth = 2.0
     
-    let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(PetDetailsViewController.editWasTapped(_:)))
+    let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PetDetailsViewController.editWasTapped(_:)))
     navigationItem.rightBarButtonItem = editButton
   }
   
-  func editWasTapped(sender: AnyObject) {
+  func editWasTapped(_ sender: AnyObject) {
     let vc = PetEditViewController()
     
     vc.petId = petId
@@ -33,8 +33,8 @@ class PetDetailsViewController: UIViewController {
     navigationController?.pushViewController(vc, animated: true)
   }
   
-  override func viewWillAppear(animated: Bool) {
-    guard let petId = petId, pet = MatchedPetsManager.sharedManager.petForId(petId) else {
+  override func viewWillAppear(_ animated: Bool) {
+    guard let petId = petId, let pet = MatchedPetsManager.sharedManager.petForId(petId) else {
       return
     }
     
@@ -42,8 +42,8 @@ class PetDetailsViewController: UIViewController {
     setPet()
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return .lightContent
   }
   
   func setPet() {
@@ -53,23 +53,23 @@ class PetDetailsViewController: UIViewController {
     
     title = currentPet.name
     nameAgeLabel.text = "\(currentPet.name), \(currentPet.age)"
-    profilePictureImageView.image = UIImage(data: currentPet.imageData)
+    profilePictureImageView.image = UIImage(data: currentPet.imageData as Data)
   }
   
-  override func encodeRestorableStateWithCoder(coder: NSCoder) {
+  override func encodeRestorableState(with coder: NSCoder) {
     //1
     if let petId = petId {
-      coder.encodeInteger(petId, forKey: "petId")
+      coder.encode(petId, forKey: "petId")
     }
     
     //2
-    super.encodeRestorableStateWithCoder(coder)
+    super.encodeRestorableState(with: coder)
   }
   
-  override func decodeRestorableStateWithCoder(coder: NSCoder) {
-    petId = coder.decodeIntegerForKey("petId")
+  override func decodeRestorableState(with coder: NSCoder) {
+    petId = coder.decodeInteger(forKey: "petId")
     
-    super.decodeRestorableStateWithCoder(coder)
+    super.decodeRestorableState(with: coder)
   }
   
   override func applicationFinishedRestoringState() {
