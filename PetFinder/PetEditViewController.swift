@@ -44,7 +44,7 @@ class PetEditViewController: UIViewController {
     profileImageView.heightAnchor.constraint(equalToConstant: 300.0).isActive = true
   }
   
-  func keyboardWillShow(_ notification: Notification) {
+  @objc func keyboardWillShow(_ notification: Notification) {
     if !keyboardUp {
       UIView.animate(withDuration: 0.25, animations: {
         self.view.center = CGPoint(x: self.view.center.x, y: self.view.center.y - 100)
@@ -53,7 +53,7 @@ class PetEditViewController: UIViewController {
     }
   }
   
-  func keyboardWillHide(_ notification: Notification) {
+  @objc func keyboardWillHide(_ notification: Notification) {
     if keyboardUp {
       UIView.animate(withDuration: 0.25, animations: {
         self.view.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 100)
@@ -89,7 +89,7 @@ class PetEditViewController: UIViewController {
     setPet()
   }
   
-  func saveWasTapped() {
+  @objc func saveWasTapped() {
     MatchedPetsManager.sharedManager.updatePet(id: petId!, name: nameTextField.text, age: ageTextField.text)
     
     navigationController?.popViewController(animated: true)

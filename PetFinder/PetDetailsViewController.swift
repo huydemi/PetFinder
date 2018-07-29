@@ -25,7 +25,7 @@ class PetDetailsViewController: UIViewController {
     navigationItem.rightBarButtonItem = editButton
   }
   
-  func editWasTapped(_ sender: AnyObject) {
+  @objc func editWasTapped(_ sender: AnyObject) {
     let vc = PetEditViewController()
     
     vc.petId = petId

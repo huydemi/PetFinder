@@ -46,7 +46,7 @@ class IntroductionViewController: UIViewController {
     animateProfileViewRight()
   }
   
-  func didPan(_ pan: UIPanGestureRecognizer) {
+  @objc func didPan(_ pan: UIPanGestureRecognizer) {
     switch pan.state {
     case .began:
       lastTouchPoint = pan.location(in: view)
@@ -105,7 +105,7 @@ class IntroductionViewController: UIViewController {
     animation.timingFunction =  CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     animation.isRemovedOnCompletion = true
     
-    animation.delegate = self as! CAAnimationDelegate
+    animation.delegate = self as? CAAnimationDelegate
     
     CATransaction.begin()
     CATransaction.setCompletionBlock { () -> Void in

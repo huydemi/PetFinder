@@ -23,23 +23,6 @@
 		AE735AF81B991D0500418E51 /* PetEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE735AF61B991D0500418E51 /* PetEditViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AE00CB201B94DFE200A96D10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE00CB011B94DFE200A96D10 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AE00CB081B94DFE200A96D10;
-			remoteInfo = PetFinder;
-		};
-		AE00CB2B1B94DFE200A96D10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE00CB011B94DFE200A96D10 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AE00CB081B94DFE200A96D10;
-			remoteInfo = PetFinder;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		AE00CB091B94DFE200A96D10 /* PetFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE00CB0C1B94DFE200A96D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,8 +31,6 @@
 		AE00CB151B94DFE200A96D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE00CB181B94DFE200A96D10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE00CB1A1B94DFE200A96D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE00CB1F1B94DFE200A96D10 /* PetFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE00CB2A1B94DFE200A96D10 /* PetFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE00CB3E1B94E82900A96D10 /* MatchedPetsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchedPetsCollectionViewController.swift; sourceTree = "<group>"; };
 		AE00CB401B94EB2000A96D10 /* PetNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNetworking.swift; sourceTree = "<group>"; };
 		AE00CB421B94F8F900A96D10 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
@@ -63,20 +44,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE00CB061B94DFE200A96D10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE00CB1C1B94DFE200A96D10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE00CB271B94DFE200A96D10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				AE00CB091B94DFE200A96D10 /* PetFinder.app */,
-				AE00CB1F1B94DFE200A96D10 /* PetFinderTests.xctest */,
-				AE00CB2A1B94DFE200A96D10 /* PetFinderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,42 +135,6 @@
 			productReference = AE00CB091B94DFE200A96D10 /* PetFinder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AE00CB1E1B94DFE200A96D10 /* PetFinderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AE00CB361B94DFE200A96D10 /* Build configuration list for PBXNativeTarget "PetFinderTests" */;
-			buildPhases = (
-				AE00CB1B1B94DFE200A96D10 /* Sources */,
-				AE00CB1C1B94DFE200A96D10 /* Frameworks */,
-				AE00CB1D1B94DFE200A96D10 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AE00CB211B94DFE200A96D10 /* PBXTargetDependency */,
-			);
-			name = PetFinderTests;
-			productName = PetFinderTests;
-			productReference = AE00CB1F1B94DFE200A96D10 /* PetFinderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		AE00CB291B94DFE200A96D10 /* PetFinderUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AE00CB391B94DFE200A96D10 /* Build configuration list for PBXNativeTarget "PetFinderUITests" */;
-			buildPhases = (
-				AE00CB261B94DFE200A96D10 /* Sources */,
-				AE00CB271B94DFE200A96D10 /* Frameworks */,
-				AE00CB281B94DFE200A96D10 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AE00CB2C1B94DFE200A96D10 /* PBXTargetDependency */,
-			);
-			name = PetFinderUITests;
-			productName = PetFinderUITests;
-			productReference = AE00CB2A1B94DFE200A96D10 /* PetFinderUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,15 +147,7 @@
 					AE00CB081B94DFE200A96D10 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = AA388QFS75;
-						LastSwiftMigration = 0830;
-					};
-					AE00CB1E1B94DFE200A96D10 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = AE00CB081B94DFE200A96D10;
-					};
-					AE00CB291B94DFE200A96D10 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = AE00CB081B94DFE200A96D10;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -244,8 +165,6 @@
 			projectRoot = "";
 			targets = (
 				AE00CB081B94DFE200A96D10 /* PetFinder */,
-				AE00CB1E1B94DFE200A96D10 /* PetFinderTests */,
-				AE00CB291B94DFE200A96D10 /* PetFinderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,20 +177,6 @@
 				AE00CB191B94DFE200A96D10 /* LaunchScreen.storyboard in Resources */,
 				AE00CB161B94DFE200A96D10 /* Assets.xcassets in Resources */,
 				AE00CB141B94DFE200A96D10 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE00CB1D1B94DFE200A96D10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE00CB281B94DFE200A96D10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,34 +201,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE00CB1B1B94DFE200A96D10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE00CB261B94DFE200A96D10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AE00CB211B94DFE200A96D10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AE00CB081B94DFE200A96D10 /* PetFinder */;
-			targetProxy = AE00CB201B94DFE200A96D10 /* PBXContainerItemProxy */;
-		};
-		AE00CB2C1B94DFE200A96D10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AE00CB081B94DFE200A96D10 /* PetFinder */;
-			targetProxy = AE00CB2B1B94DFE200A96D10 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AE00CB121B94DFE200A96D10 /* Main.storyboard */ = {
@@ -436,7 +314,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huydang.PetFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -450,55 +329,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huydang.PetFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		AE00CB371B94DFE200A96D10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PetFinderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lbit.PetFinderTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetFinder.app/PetFinder";
-			};
-			name = Debug;
-		};
-		AE00CB381B94DFE200A96D10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PetFinderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lbit.PetFinderTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetFinder.app/PetFinder";
-			};
-			name = Release;
-		};
-		AE00CB3A1B94DFE200A96D10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PetFinderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lbit.PetFinderUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PetFinder;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		AE00CB3B1B94DFE200A96D10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PetFinderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lbit.PetFinderUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PetFinder;
-				USES_XCTRUNNER = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -519,24 +351,6 @@
 			buildConfigurations = (
 				AE00CB341B94DFE200A96D10 /* Debug */,
 				AE00CB351B94DFE200A96D10 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AE00CB361B94DFE200A96D10 /* Build configuration list for PBXNativeTarget "PetFinderTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AE00CB371B94DFE200A96D10 /* Debug */,
-				AE00CB381B94DFE200A96D10 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AE00CB391B94DFE200A96D10 /* Build configuration list for PBXNativeTarget "PetFinderUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AE00CB3A1B94DFE200A96D10 /* Debug */,
-				AE00CB3B1B94DFE200A96D10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -26,7 +26,7 @@ class MatchedPetsManager {
   
   func unarchivePets() {
     let dirPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] as String
-    let pathArray = [dirPath, fileName]
+    //let pathArray = [dirPath, fileName]
     let fileURL = URL(fileURLWithPath: dirPath + "\\" + fileName)
     let path = fileURL.path
     if let pets = NSKeyedUnarchiver.unarchiveObject(withFile: path) {
@@ -36,7 +36,7 @@ class MatchedPetsManager {
   
   func archivePets() {
     let dirPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] as String
-    let pathArray = [dirPath, fileName]
+    //let pathArray = [dirPath, fileName]
     let fileURL = URL(fileURLWithPath: dirPath + "\\" + fileName)
     
     NSKeyedArchiver.archiveRootObject(matchedPets, toFile: fileURL.path)
